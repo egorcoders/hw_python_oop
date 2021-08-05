@@ -39,6 +39,9 @@ class Calculator():
                 total_week_amount += record.amount
         return total_week_amount
 
+    def get_today_limit(self):
+        return self.limit - self.get_today_stats()
+
 
 class CashCalculator(Calculator):
     USD_RATE = 73.20
@@ -50,17 +53,10 @@ class CashCalculator(Calculator):
 
     def get_today_cash_remained(self, currency):
         self.currency = currency
-
+        t_amount = self.get_today_limit()
         rub_currency = 'руб'
         usd_currency = 'USD'
         eur_currency = 'Euro'
-
-        t_amount = 0
-        for record in self.records:
-            if record.date == now.date():
-                t_amount += record.amount
-        t_amount = self.limit - t_amount
-
         wrong_currency_message = 'Указана неверная валюта. Повторите ввод.'
         positive_message = 'На сегодня осталось'
         neutral_message = 'Денег нет, держись'
