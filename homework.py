@@ -28,18 +28,18 @@ class Calculator:
         self.records.append(record)
 
     def get_today_stats(self):
-        t_amount = 0
+        t_amount = []
         for record in self.records:
             if record.date == self.get_today_date():
-                t_amount += record.amount
-        return t_amount
+                t_amount.append(record.amount)
+        return sum(t_amount)
 
     def get_week_stats(self):
-        total_week_amount = 0
+        total_week_amount = []
         for record in self.records:
             if self.get_today_date() >= record.date > self.get_week_date():
-                total_week_amount += record.amount
-        return total_week_amount
+                total_week_amount.append(record.amount)
+        return sum(total_week_amount)
 
     def get_today_limit(self):
         return self.limit - self.get_today_stats()
