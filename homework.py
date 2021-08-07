@@ -79,9 +79,8 @@ class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
         positive_message = ('Сегодня можно съесть что-нибудь ещё, '
                             'но с общей калорийностью не более')
-
         t_amount = self.get_today_limit()
 
         if t_amount > 0:
             return (f'{positive_message} {t_amount} кКал')
-        return ('Хватит есть!')
+        return 'Хватит есть!'
