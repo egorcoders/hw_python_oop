@@ -24,7 +24,7 @@ class Record
 r1 = Record(amount=122, comment='Хороший шопинг', date='09.04.2019')
 ```
 
-## Родительский класс калькулятора
+## Базовый класс калькулятора
 
 ```python
 class Calculator
